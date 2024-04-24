@@ -1,0 +1,17 @@
+cannyed_image = cv2.Canny(gray_image, 250, 500)
+
+region_of_interest_vertices = [
+    (0, height),
+    (width//2, height//2),
+    (width, height),
+]
+lines = cv2.HoughLinesP(
+    cropped_image,
+    rho=15,
+    theta=np.pi / 75,
+    threshold=150,
+    lines=np.array([]),
+    minLineLength=30,
+    maxLineGap=10
+)
+now change the threshold1 to 250 and threshold2 to 500

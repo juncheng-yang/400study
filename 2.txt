@@ -1,0 +1,7 @@
+cannyed_image = cv2.Canny(gray_image, 100, 200)
+region_of_interest_vertices = [
+    (0, height),
+    (width//2, height//2),
+    (width, height),
+]
+change the vertex to middle point of image

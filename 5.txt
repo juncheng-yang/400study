@@ -1,0 +1,14 @@
+cannyed_image = cv2.Canny(gray_image, 250, 490)
+
+lines = cv2.HoughLinesP(
+    cropped_canny,
+    rho=4,
+    theta=np.pi / 40,
+    threshold=140,
+    lines=np.array([]),
+    minLineLength=50,
+    maxLineGap=25
+)
+print(lines)
+now change the threshold1 to 250 and threshold2 to 490
+add print lines to Check if any lines are detected by Hough transform

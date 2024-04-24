@@ -1,0 +1,26 @@
+left_line_x = []
+left_line_y = []
+right_line_x = []
+right_line_y = []
+for line in lines:
+    for x1, y1, x2, y2 in line:
+        slope = (y2 - y1) / (x2 - x1) # <-- Calculating the slope.
+        if math.fabs(slope) < 0.5: # <-- Only consider extreme slope
+            continue
+        if slope <= 0: # <-- If the slope is negative, left group.
+            left_line_x.extend([x1, x2])
+            left_line_y.extend([y1, y2])
+        else: # <-- Otherwise, right group.
+            right_line_x.extend([x1, x2])
+            right_line_y.extend([y1, y2])
+if left_line_y and right_line_y:
+    poly_left = np.poly1d(np.polyfit(left_line_y, left_line_x, deg=1))
+    poly_right = np.poly1d(np.polyfit(right_line_y, right_line_x, deg=1))
+    min_y = int(height * (3 / 5))
+    max_y = height
+    left_x_start = int(poly_left(max_y))
+    left_x_end = int(poly_left(min_y))
+    right_x_start = int(poly_right(max_y))
+    right_x_end = int(poly_right(min_y))
+
+add left line and right line
