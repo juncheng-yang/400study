@@ -1,0 +1,2 @@
+Lower Threshold: 120
+Higher Threshold: 138
